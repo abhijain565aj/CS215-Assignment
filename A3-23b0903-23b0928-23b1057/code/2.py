@@ -26,7 +26,7 @@ class EpanechnikovKDE:
 
 
 #load the data from the NPZ file
-data_file = np.load('transaction_data.npz')
+data_file = np.load('./code/transaction_data.npz')
 data = data_file['data']
 
 # TODO: Initialize the EpanechnikovKDE class
@@ -64,6 +64,6 @@ ax.set_zlabel('Density')
 
 plt.title('3D Surface Plot of Density')
 
-plt.savefig('transaction_distribution.png')
+plt.savefig('./images/transaction_distribution.png')
 
 plt.show()
