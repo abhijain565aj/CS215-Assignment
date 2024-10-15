@@ -8,7 +8,9 @@ data = pd.read_csv(
 
 # the first 1500 rows and filter rows where distance (D (Mpc)) < 4
 filtered_data = data.loc[:1499, 'D (Mpc)'].dropna()
+# print(len(filtered_data))
 distance_data = filtered_data[filtered_data < 4].values
+# print(len(distance_data))
 
 # print(distance_data)
 
@@ -17,7 +19,7 @@ print("------------------------------------")
 print("Part (a) Plotting histogram with 10 bins")
 bins = 10
 hist, bin_edges = np.histogram(
-    distance_data, bins=bins, range=(0, 4), density=False)
+    distance_data, bins=bins, range=(0, 4), density=True)
 
 # Estimated probabilities for each bin
 n = len(distance_data)
@@ -28,10 +30,11 @@ estimated_probabilities = hist / n
 plt.figure()
 plt.xlim(0, 4)
 plt.xticks(np.arange(0, 4.1, 0.4))
-plt.hist(distance_data, bins=bins, range=(0, 4), edgecolor='black')
+plt.hist(distance_data, bins=bins, range=(
+    0, 4), edgecolor='black', density=True)
 plt.title('Histogram with 10 bins')
 plt.xlabel('Distance (Mpc)')
-plt.ylabel('Frequency')
+plt.ylabel('Probability Density')
 plt.savefig('../images/1/10binhistogram.png')
 
 # Print estimated probabilities for each bin
@@ -41,7 +44,7 @@ print(f"Estimated probabilities (p_j) for each bin:")
 print(", ".join(f"{x:.3f}" for x in estimated_probabilities))
 print("------------------------------------")
 print("Part (b) Comment on the probability distribution")
-print("The probability distribution is an underfit")
+print("The probability distribution is an undersmoothed")
 print("------------------------------------")
 print("Part (c) Calculate cross-validation score for 1 to 1000 bins")
 # Part (c) Calculate cross-validation score for bin widths from 1 to 1000 bins
@@ -84,11 +87,12 @@ print("------------------------------------")
 print("Part (e) Plot histogram with the optimal bin width and compare with the 10-bin histogram")
 # Part (e) Plot histogram with the optimal bin width and compare with the 10-bin histogram
 plt.figure()
-plt.hist(distance_data, bins=m_optimal, range=(0, 4), edgecolor='black')
+plt.hist(distance_data, bins=m_optimal, range=(
+    0, 4), edgecolor='black', density=True)
 plt.xlim(0, 4)
 plt.title(f'Optimal Histogram with {m_optimal} bins')
 plt.xlabel('Distance (Mpc)')
-plt.ylabel('Frequency')
+plt.ylabel('Probability Density')
 plt.savefig('../images/1/optimalhistogram.png')
 print("Saved the optimal histogram as optimalhistogram.png")
 print("------------------------------------")
