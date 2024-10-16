@@ -36,9 +36,9 @@ kernel = EpanechnikovKDE(bandwidth=1)
 kernel.fit(data=data)
 
 # TODO: Plot the estimated density in a 3D plot
+
 range_x = np.linspace(data[:, 0].min(), data[:, 0].max(), 50)
 range_y = np.linspace(data[:, 1].min(), data[:, 1].max(), 50)
-
 x_grid, y_grid = np.meshgrid(range_x, range_y)
 grid_points = np.c_[x_grid.ravel(), y_grid.ravel()]
 
