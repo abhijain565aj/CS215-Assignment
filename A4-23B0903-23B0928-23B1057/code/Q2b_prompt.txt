@@ -1,4 +1,4 @@
-Here is the dataset of passengers carried by air traffic for the last 128 months:
+Here, is the dataset of passengers carried by air traffic for the last 128 months:
 
 YEAR_MONTH,PASSENGERS CARRIED
 2013-01,1408012.0
